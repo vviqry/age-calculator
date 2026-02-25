@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/* Custom text shadow for readability on background images */
+@utility text-shadow {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+@utility text-shadow-sm {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}

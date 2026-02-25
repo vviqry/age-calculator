@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import type { DateInput } from '../types/age.types';
 import { validateDateInput, calculateAge } from '../utils/calculateAge';
 import { getHistoricalEvents } from '../services/api';
@@ -55,9 +56,9 @@ function InputForm() {
   };
 
   const inputStyle =
-    'w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-center text-2xl font-bold text-gray-900 outline-none transition-all focus:border-purple-400 focus:bg-white focus:ring-2 focus:ring-purple-200';
+    'w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-center text-2xl font-bold text-white placeholder:text-white/30 outline-none transition-all focus:border-pink-400 focus:bg-white/20 focus:ring-2 focus:ring-pink-400/30';
 
-  const labelStyle = 'block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2';
+  const labelStyle = 'block text-xs font-semibold uppercase tracking-widest text-white/50 mb-2';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
@@ -116,18 +117,20 @@ function InputForm() {
 
       {/* Error message */}
       {error && (
-        <p className="rounded-lg bg-red-50 px-4 py-2 text-sm font-medium text-red-500">
+        <p className="rounded-lg bg-red-500/20 border border-red-500/30 px-4 py-2 text-sm font-medium text-red-300">
           {error}
         </p>
       )}
 
       {/* Submit button */}
-      <button
+      <motion.button
         type="submit"
-        className="w-full cursor-pointer rounded-xl bg-purple-600 py-3 px-6 text-base font-semibold text-white shadow-md transition-all hover:bg-purple-700 hover:shadow-lg active:scale-[0.98]"
+        whileHover={{ scale: 1.02, boxShadow: '0 0 25px rgba(236, 72, 153, 0.4)' }}
+        whileTap={{ scale: 0.96 }}
+        className="w-full cursor-pointer rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 py-3 px-6 text-base font-semibold text-white shadow-lg shadow-pink-500/25 transition-colors hover:from-pink-600 hover:to-purple-700"
       >
         Hitung Umur
-      </button>
+      </motion.button>
     </form>
   );
 }

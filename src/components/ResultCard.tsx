@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import useAgeStore from '../store/useAgeStore';
 
 function ResultCard() {
@@ -13,11 +14,19 @@ function ResultCard() {
 
   return (
     <div className="space-y-2 py-4">
-      {items.map((item) => (
-        <p key={item.singular} className="text-4xl font-extrabold leading-snug text-gray-900 md:text-5xl">
-          <span className="text-purple-600">{item.value}</span>{' '}
+      {items.map((item, index) => (
+        <motion.p
+          key={item.singular}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: index * 0.15, ease: 'easeOut' }}
+          className="text-4xl font-extrabold leading-snug text-white text-shadow md:text-5xl"
+        >
+          <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+            {item.value}
+          </span>{' '}
           {item.value === 1 ? item.singular : item.plural}
-        </p>
+        </motion.p>
       ))}
     </div>
   );
