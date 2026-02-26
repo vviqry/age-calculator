@@ -6,7 +6,7 @@ const wikiApi = axios.create({
   headers: {
     'Accept': 'application/json',
   },
-});
+}); 
 
 // Interceptor untuk handle response error secara global
 wikiApi.interceptors.response.use(
